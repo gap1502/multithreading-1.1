@@ -3,15 +3,9 @@ class Main {
         ThreadGroup mainGroup = new ThreadGroup("main group");
 
         System.out.println("Создаю потоки...");
-        final MyThread thread1 = new MyThread(mainGroup, "Поток 1");
-        final MyThread thread2 = new MyThread(mainGroup, "Поток 2");
-        final MyThread thread3 = new MyThread(mainGroup, "Поток 3");
-        final MyThread thread4 = new MyThread(mainGroup, "Поток 4");
-
-        thread1.start();
-        thread2.start();
-        thread3.start();
-        thread4.start();
+        for (int i = 1; i < 5; i++) {
+            new Thread(mainGroup, new MyThread(mainGroup, "Поток " + i)).start();
+        }
 
         try {
             Thread.sleep(15000);
